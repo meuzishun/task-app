@@ -1,3 +1,42 @@
-ul {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#root div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#root div form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 3rem 0 2rem;
+}
+
+#root div form * {
+  font-size: 2rem;
+}
+
+#root div form input,
+#root div form button {
+  padding: 0.5rem;
+}
+
+#root div ul {
   list-style: none;
+}
+
+#root div ul li {
+  font-size: 1.5rem;
+  margin: 1rem;
 }
