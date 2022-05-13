@@ -37,6 +37,14 @@ html {
 }
 
 #root div ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 1.5rem;
   margin: 1rem;
+}
+
+#root div ul li button {
+  text-transform: capitalize;
+  padding: 0.2rem 0.5rem;
 }

@@ -8,7 +8,7 @@ const Overview = (props) => {
       {tasks.map((task, index) => {
         return (
           <li key={task.id}>
-            {index + 1}: {task.text}
+            {index + 1}: {task.text} <button>remove</button>
           </li>
         );
       })}
