@@ -44,6 +44,10 @@ html {
   margin: 1rem;
 }
 
+#root div ul li input {
+  font-size: 1.5rem;
+}
+
 #root div ul li button {
   text-transform: capitalize;
   padding: 0.2rem 0.5rem;

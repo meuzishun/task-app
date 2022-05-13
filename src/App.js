@@ -10,6 +10,7 @@ class App extends Component {
       task: {
         text: '',
         id: uniqid(),
+        edit: false,
       },
       tasks: [],
     };
@@ -20,6 +21,7 @@ class App extends Component {
       task: {
         text: e.target.value,
         id: this.state.task.id,
+        edit: false,
       },
     });
   };
@@ -31,7 +33,34 @@ class App extends Component {
       task: {
         text: '',
         id: uniqid(),
+        edit: false,
       },
+    });
+  };
+
+  onTaskEdit = (e) => {
+    const key = e.target.parentElement.id;
+    this.setState({
+      tasks: this.state.tasks.map((task) => {
+        if (task.id === key) {
+          task.edit = true;
+        }
+        return task;
+      }),
+    });
+  };
+
+  onEditSubmit = (e) => {
+    const key = e.target.parentElement.id;
+    const text = e.target.previousSibling.value;
+    this.setState({
+      tasks: this.state.tasks.map((task) => {
+        if (task.id === key) {
+          task.edit = false;
+          task.text = text;
+        }
+        return task;
+      }),
     });
   };
 
@@ -57,7 +86,12 @@ class App extends Component {
           />
           <button type='submit'>Add Task</button>
         </form>
-        <Overview tasks={tasks} onTaskRemoval={this.onTaskRemoval} />
+        <Overview
+          tasks={tasks}
+          onTaskEdit={this.onTaskEdit}
+          onEditSubmit={this.onEditSubmit}
+          onTaskRemoval={this.onTaskRemoval}
+        />
       </div>
     );
   }
