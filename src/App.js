@@ -35,6 +35,13 @@ class App extends Component {
     });
   };
 
+  onTaskRemoval = (e) => {
+    const key = e.target.parentElement.id;
+    this.setState({
+      tasks: this.state.tasks.filter((task) => task.id !== key),
+    });
+  };
+
   render() {
     const { task, tasks } = this.state;
 
@@ -50,7 +57,7 @@ class App extends Component {
           />
           <button type='submit'>Add Task</button>
         </form>
-        <Overview tasks={tasks} />
+        <Overview tasks={tasks} onTaskRemoval={this.onTaskRemoval} />
       </div>
     );
   }

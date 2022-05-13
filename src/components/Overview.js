@@ -1,14 +1,15 @@
 import React from 'react';
 
 const Overview = (props) => {
-  const { tasks } = props;
+  const { tasks, onTaskRemoval } = props;
 
   return (
     <ul>
       {tasks.map((task, index) => {
         return (
-          <li key={task.id}>
-            {index + 1}: {task.text} <button>remove</button>
+          <li key={task.id} id={task.id}>
+            {index + 1}: {task.text}{' '}
+            <button onClick={onTaskRemoval}>remove</button>
           </li>
         );
       })}
