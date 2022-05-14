@@ -1,5 +1,25 @@
 import React, { Component } from 'react';
 
+function EditListItem(props) {
+  return (
+    <li id={props.task.id}>
+      {props.index + 1}:
+      <input type='text' defaultValue={props.task.text} />
+      <button onClick={props.onEditSubmit}>submit</button>
+    </li>
+  );
+}
+
+function ListItem(props) {
+  return (
+    <li id={props.task.id}>
+      {props.index + 1}: {props.task.text}
+      <button onClick={props.onTaskEdit}>edit</button>
+      <button onClick={props.onTaskRemoval}>remove</button>
+    </li>
+  );
+}
+
 class Overview extends Component {
   constructor(props) {
     super(props);
@@ -14,16 +34,20 @@ class Overview extends Component {
       <ul>
         {tasks.map((task, index) => {
           return task.edit ? (
-            <li key={task.id} id={task.id}>
-              {index + 1}: <input type='text' defaultValue={task.text} />
-              <button onClick={onEditSubmit}>submit</button>
-            </li>
+            <EditListItem
+              key={task.id}
+              task={task}
+              index={index}
+              onEditSubmit={onEditSubmit}
+            />
           ) : (
-            <li key={task.id} id={task.id}>
-              {index + 1}: {task.text}{' '}
-              <button onClick={onTaskEdit}>edit</button>
-              <button onClick={onTaskRemoval}>remove</button>
-            </li>
+            <ListItem
+              key={task.id}
+              task={task}
+              index={index}
+              onTaskEdit={onTaskEdit}
+              onTaskRemoval={onTaskRemoval}
+            />
           );
         })}
       </ul>
